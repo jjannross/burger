@@ -3,8 +3,8 @@ const orm = require("../config/orm.js");
 
 const burgers = {
   //   selectAll() {}, insertOne() {}, updateOne() {}
-  all(cb) {
-    orm.all("burgers", (res) => cb(res));
+  selectAll(cbController) {
+    orm.selectAll("burgers", (burgers_db) => cbController(burgers_db));
   },
   // The variables cols and vals are arrays.
   create(cols, vals, cb) {

@@ -7,21 +7,18 @@ const burger = require("../models/burger.js");
 
 //router.get
 router.get("/", (req, res) => {
-  burger.selectAll((results) => {
-    res.render("index", { burgers: results });
+  burger.selectAll((burgers_db) => {
+    console.log(burgers_db);
+    res.render("index", { burgerData: burgers_db });
   });
 });
 
 //router.post insertOne
 router.post("/api/burgers", (req, res) => {
-  burger.create(
-    ["name", "devoured"],
-    [req.body.name, req.body.devoured],
-    (result) => {
-      // Send back the ID of the new quote
-      res.json({ id: result.insertId });
-    }
-  );
+  burger.create(["burger_name", "devoured"], [req.body.name, 0], (result) => {
+    // Send back the ID of the new quote
+    res.json({ id: result.insertId });
+  });
 });
 
 //router.put updateOne

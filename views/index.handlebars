@@ -1,0 +1,41 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            picture place holder
+        </div>
+    </div>
+    <div class="row">
+        
+        <div class="col-sm-6">
+             <ul>
+                 {{#each burgerData}}
+                   {{#unless devoured}}
+                      <li>{{burger_name}} <button>Eat the Burger</button></li>
+                   {{/unless}}
+                 {{/each}}
+             </ul>
+        </div>
+       
+       <div class="col-sm-6">
+           <ul>
+                 {{#each burgerData}}
+                   {{#if devoured}}
+                      <li>{{burger_name}} <button>Eat the Burger</button></li>
+                   {{/if}}
+                 {{/each}}
+             </ul>
+           
+       </div>
+
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <form action="/api/burgers" method="POST" >
+               <textarea name="burger_name" id="burger_name" cols="30" rows="10"></textarea>
+              <button>Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+ 
