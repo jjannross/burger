@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
       e.preventDefault();
 
       const newBurger = {
-        burger_name: document.getElementById("newBurger").value.trim(),
+        burger_name: document.getElementById("burger_name").value.trim(),
       };
 
       console.log(newBurger);

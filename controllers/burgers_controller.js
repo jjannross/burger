@@ -15,7 +15,8 @@ router.get("/", (req, res) => {
 
 //router.post insertOne
 router.post("/api/burgers", (req, res) => {
-  burger.create(["burger_name", "devoured"], [req.body.name, 0], (result) => {
+  burger.insertOne("burgers", req.body.name, (result) => {
+    console.log(req.body);
     // Send back the ID of the new quote
     res.json({ id: result.insertId });
   });
@@ -24,7 +25,6 @@ router.post("/api/burgers", (req, res) => {
 //router.put updateOne
 router.put("/api/burgers/:id", (req, res) => {
   const condition = `id = ${req.params.id}`;
-
   console.log("condition", condition);
 
   burger.update(

@@ -18,17 +18,17 @@ const orm = {
     connection.query(queryString, [table, burgerName], (err, result) => {
       console.log(burgerName);
       if (err) throw err;
-      cb(result);
+      cbModel(result);
     });
   },
   updateOne(table, devoured, col, val, cbModel) {
     const queryString = "UPDATE ?? SET ? WHERE ?? = ?";
     connection.query(
       queryString,
-      [table, devoured, col, val, cb],
+      [table, devoured, col, val, cbModel],
       (err, result) => {
         if (err) throw err;
-        cb(result);
+        cbModel(result);
       }
     );
   },

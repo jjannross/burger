@@ -1,22 +1,21 @@
-const express = require('express');
-
+const express = require("express");
 const PORT = process.env.PORT || 8080;
-
 const app = express();
-
-//makes public folder home directory on the browser
-app.use(express.static("public"))
+const exphbs = require("express-handlebars");
 
 //unwrapping client data to original format and stores in req.body
-app.use(express.urlencoded({extended: true}))
-app.use(express.json())
-const exphbs=require("express-handlebars")
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
-app.engine("handlebars",exphbs({defaultLayout:"main"}))
-app.set("view engine","handlebars")
+//makes public folder home directory on the browser
+app.use(express.static("public"));
 
-app.use(require("./controllers/burgers_controller"))
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
 
-app.listen(PORT, function(){
-    console.log("app is listening on " + PORT)
-})
+app.use(require("./controllers/burgers_controller"));
+
+app.listen(PORT, function () {
+  console.log("app is listening on " + PORT);
+});
+
