@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
   }
 });
 
-// devour burger
+// devoured burger
 const devourBtn = document.querySelectorAll(".devour");
 
 if (devourBtn) {

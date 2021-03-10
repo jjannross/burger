@@ -13,8 +13,25 @@ const orm = {
     );
     console.log(statement.sql);
   },
-  insertOne() {},
-  updateOne() {},
+  insertOne(table, burgerName, cbModel) {
+    const queryString = "INSERT INTO ?? SET ?";
+    connection.query(queryString, [table, burgerName], (err, result) => {
+      console.log(burgerName);
+      if (err) throw err;
+      cb(result);
+    });
+  },
+  updateOne(table, devoured, col, val, cbModel) {
+    const queryString = "UPDATE ?? SET ? WHERE ?? = ?";
+    connection.query(
+      queryString,
+      [table, devoured, col, val, cb],
+      (err, result) => {
+        if (err) throw err;
+        cb(result);
+      }
+    );
+  },
 };
 
 // Export the orm object for the model (cat.js).

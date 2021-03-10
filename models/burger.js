@@ -6,15 +6,13 @@ const burgers = {
   selectAll(cbController) {
     orm.selectAll("burgers", (burgers_db) => cbController(burgers_db));
   },
-  // The variables cols and vals are arrays.
-  create(cols, vals, cb) {
-    orm.create("burgers", cols, vals, (res) => cb(res));
+
+  insertOne(burgerName, cb) {
+    orm.insertOne("burgers", burgerName, (res) => cb(res));
   },
+
   update(objColVals, condition, cb) {
     orm.update("burgers", objColVals, condition, (res) => cb(res));
-  },
-  delete(condition, cb) {
-    orm.delete("burgers", condition, (res) => cb(res));
   },
 };
 
