@@ -32,7 +32,20 @@ const orm = {
       }
     );
   },
+  delete(table, condition, cb) {
+    let queryString = `DELETE FROM ${table}`;
+    queryString += ' WHERE ';
+    queryString += condition;
+
+    connection.query(queryString, (err, result) => {
+      if (err) {
+        throw err;
+      }
+
+      cb(result);
+    });
+  },
 };
 
-// Export the orm object for the model (cat.js).
+// Export the orm object for the model (burger.js).
 module.exports = orm;

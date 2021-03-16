@@ -23,7 +23,7 @@ h1 {
 }
 
 .input-container {
-  align: center;
+  align-content: center;
   /* float: center; */
   width: 40%;
   margin: 42px 3%;
