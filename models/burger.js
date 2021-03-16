@@ -7,8 +7,8 @@ const burgers = {
     orm.selectAll("burgers", (burgers_db) => cbController(burgers_db));
   },
 
-  insertOne(burgerName, cb) {
-    orm.insertOne("burgers", burgerName, (res) => cb(res));
+  insertOne(cols, vals, cb) {
+    orm.insertOne("burgers", cols, vals, (res) => cb(res));
   },
 
   update(objColVals, condition, cb) {

@@ -1,24 +1,56 @@
 body {
-  background-color: cadetblue;
+  background-color: rgb(221, 152, 107);
+  font-family: "Roboto Mono", monospace;
 }
 
-/* li {
-  padding: 5px;
+li {
   margin: 5px;
-  background: #faebd7;
+  font-size: 20px;
 }
 
 .label {
   font-weight: bold;
 }
 
-.create-update-form {
-  padding: 5px;
-  margin: 5px;
-  background: aqua;
+h1 {
+  align-content: center;
+  border-style: dotted;
+  color: #fad46b;
 }
 
-.form-group {
-  margin-bottom: 5px;
-  
-} */
+:focus {
+  outline: none;
+}
+
+.input-container {
+  align: center;
+  /* float: center; */
+  width: 40%;
+  margin: 42px 3%;
+  position: relative;
+}
+
+input[type="text"] {
+  font: 15px/24px "Lato", Arial, sans-serif;
+  color: #fad46b;
+  width: 70%;
+  box-sizing: border-box;
+  letter-spacing: 1px;
+  background-color: rgb(19, 23, 44);
+  border: none;
+}
+
+.effect-1 ~ .focus-border {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #fad46b;
+  transition: 0.4s;
+}
+
+.effect-1:focus ~ .focus-border {
+  width: 70%;
+  transition: 0.4s;
+}
