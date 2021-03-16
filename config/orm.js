@@ -13,7 +13,7 @@ const orm = {
     );
     console.log(statement.sql);
   },
-  insertOne(table, burgerName, cbModel) {
+  insertOne(table, col, burgerName, cbModel) {
     const queryString = "INSERT INTO ?? SET ?";
     connection.query(queryString, [table, burgerName], (err, result) => {
       console.log(burgerName);

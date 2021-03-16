@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
       const newBurger = {
         burger_name: document.getElementById("burger_name").value.trim(),
+        devoured: false
       };
 
       console.log(newBurger);
