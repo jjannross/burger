@@ -3,11 +3,11 @@ const express = require("express");
 const router = express.Router();
 
 // Import the model (burger.js) to use its database functions.
-const burger = require("../models/burger.js");
+const burgers = require("../models/burger.js");
 
 //router.get
 router.get("/", (req, res) => {
-  burger.selectAll((burgers_db) => {
+  burgers.selectAll((burgers_db) => {
     console.log(burgers_db);
     res.render("index", { burgerData: burgers_db });
   });
@@ -15,7 +15,7 @@ router.get("/", (req, res) => {
 
 //router.post insertOne
 router.post("/api/burgers", (req, res) => {
-  burger.insertOne("burgers", req.body.name, (result) => {
+  burgers.insertOne("burgers", req.body.name, (result) => {
     console.log(req.body);
     // Send back the ID of the new quote
     res.json({ id: result.insertId });
@@ -27,7 +27,7 @@ router.put("/api/burgers/:id", (req, res) => {
   const condition = `id = ${req.params.id}`;
   console.log("condition", condition);
 
-  burger.update(
+  burgers.update(
     {
       devoured: req.body.devoured,
     },
@@ -44,7 +44,7 @@ router.put("/api/burgers/:id", (req, res) => {
   router.delete('/api/burgers/:id', (req, res) => {
     const condition = `id = ${req.params.id}`;
   
-    cat.delete(condition, (result) => {
+    burgers.delete(condition, (result) => {
       if (result.affectedRows === 0) {
         // If no rows were changed, then the ID must not exist, so 404
         return res.status(404).end();
