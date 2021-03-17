@@ -1,6 +1,16 @@
 // Import MySQL connection.
 const connection = require("./connection.js");
 
+const printQuestionMarks = (num) => {
+  const arr = [];
+
+  for (let i = 0; i < num; i++) {
+    arr.push('?');
+  }
+
+  return arr.toString();
+};
+
 const orm = {
   selectAll: (table, cbModel) => {
     const statement = connection.query(
@@ -14,13 +24,25 @@ const orm = {
     console.log(statement.sql);
   },
   insertOne(table, col, burgerName, cbModel) {
-    const queryString = "INSERT INTO ?? SET ?";
-    connection.query(queryString, [table, burgerName], (err, result) => {
+    const queryString = `INSERT INTO ${table} (${col.toString()}) VALUES (${printQuestionMarks(burgerName.length)});`
+    connection.query(queryString, burgerName, (err, result) => {
       console.log(burgerName);
       if (err) throw err;
       cbModel(result);
     });
   },
+ 
+ 
+ 
+ 
+  // insertOne(table, col, burgerName, cbModel) {
+  //   const queryString = "INSERT INTO ?? SET ?";
+  //   connection.query(queryString, [table, col, burgerName], (err, result) => {
+  //     console.log(burgerName);
+  //     if (err) throw err;
+  //     cbModel(result);
+  //   });
+  // },
   updateOne(table, devoured, col, val, cbModel) {
     const queryString = "UPDATE ?? SET ? WHERE ?? = ?";
     connection.query(

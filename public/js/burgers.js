@@ -7,35 +7,42 @@ document.addEventListener("DOMContentLoaded", (event) => {
   const createBurger = document.getElementById("create-form");
 
   if (createBurger) {
-    createBurger.addEventListener("submit", (e) => {
-      e.preventDefault();
-
-      const newBurger = {
-        burger_name: document.getElementById("burger_name").value.trim(),
-        devoured: false
-      };
-
-      console.log(newBurger);
-
-      fetch("/api/burgers", {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-
-        body: JSON.stringify(newBurger),
-      }).then((response) => {
-        console.log(response);
-
-        document.getElementById("newBurger").value = "";
-
-        console.log("Created a new burger!");
-        location.reload("/");
-      });
-    });
+    createBurger.addEventListener("submit", );
   }
 });
+
+const postBurger = (e) => {
+  e.preventDefault();
+  
+  if (!document.getElementById("burger_name").value) return;
+
+  const newBurger = {
+    burger_name: document.getElementById("burger_name").value.trim(),
+    devoured: false
+  };
+
+  console.log(newBurger);
+
+  fetch("/api/burgers", {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+
+    body: JSON.stringify(newBurger),
+  }).then((response) => {
+    console.log(response);
+
+    document.getElementById("burger_name").value = "";
+
+    console.log("Created a new burger!");
+    location.reload();
+  });
+}
+
+document.getElementById("addMenu").addEventListener("click", postBurger);
+
 
 // devoured burger
 const devourBtn = document.querySelectorAll(".devour");
@@ -68,3 +75,27 @@ if (devourBtn) {
     });
   });
 }
+
+document.querySelectorAll(".delete-burger").addEventListener("click", deleteBurger);
+
+const deleteBurger = (event) => {
+console.log (event);
+
+
+fetch("/api/burgers", {
+  method: "DELETE",
+  headers: {
+    Accept: "application/json",
+    "Content-Type": "application/json",
+  },
+
+  
+}).then((response) => {
+  console.log(response);
+
+  
+
+  console.log("Created a new burger!");
+  location.reload();
+});
+};
