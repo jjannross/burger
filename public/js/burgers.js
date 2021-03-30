@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     createBurger.addEventListener("submit", );
   }
 });
-
+//create burger
 const postBurger = (e) => {
   e.preventDefault();
   
@@ -44,14 +44,13 @@ const postBurger = (e) => {
 document.getElementById("addMenu").addEventListener("click", postBurger);
 
 
-// devoured burger
-const devourBtn = document.querySelectorAll(".devour");
+// move to burgers eaten
+const devourBtn = document.querySelectorAll(".change-devoured");
 
 if (devourBtn) {
   devourBtn.forEach((button) => {
     button.addEventListener("click", (e) => {
       const id = e.target.getAttribute("data-id");
-
       const burgerDevoured = {
         devoured: true,
       };
@@ -78,24 +77,3 @@ if (devourBtn) {
 
 document.querySelectorAll(".delete-burger").addEventListener("click", deleteBurger);
 
-const deleteBurger = (event) => {
-console.log (event);
-
-
-fetch("/api/burgers", {
-  method: "DELETE",
-  headers: {
-    Accept: "application/json",
-    "Content-Type": "application/json",
-  },
-
-  
-}).then((response) => {
-  console.log(response);
-
-  
-
-  console.log("Created a new burger!");
-  location.reload();
-});
-};

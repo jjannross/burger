@@ -33,16 +33,6 @@ const orm = {
   },
  
  
- 
- 
-  // insertOne(table, col, burgerName, cbModel) {
-  //   const queryString = "INSERT INTO ?? SET ?";
-  //   connection.query(queryString, [table, col, burgerName], (err, result) => {
-  //     console.log(burgerName);
-  //     if (err) throw err;
-  //     cbModel(result);
-  //   });
-  // },
   updateOne(table, devoured, col, val, cbModel) {
     const queryString = "UPDATE ?? SET ? WHERE ?? = ?";
     connection.query(
