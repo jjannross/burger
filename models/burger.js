@@ -2,7 +2,7 @@
 const orm = require("../config/orm.js");
 
 const burgers = {
-  //   selectAll() {}, insertOne() {}, updateOne() {}
+ 
   selectAll(cbController) {
     orm.selectAll("burgers", (burgers_db) => cbController(burgers_db));
   },
